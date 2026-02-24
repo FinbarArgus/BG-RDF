@@ -133,24 +133,28 @@ bgf:ZeroNode
 bgf:OneStorageNode
     a bgf:CompositeElement ;
     rdfs:subClassOf bgf:FlowStore ;
+    rdfs:subClassOf bgf:OneNode ;
     rdfs:label "One flow store node" ;
     dcterms:description "A flow store element with one associated One Nodes" .
 
 bgf:OneReactionNode
     a bgf:CompositeElement ;
     rdfs:subClassOf bgf:Reaction ;
+    rdfs:subClassOf bgf:OneNode ;
     rdfs:label "One reaction node" ;
     dcterms:description "A dissipator with two associated One Nodes" .
 
 bgf:OneResistanceNode
     a bgf:CompositeElement ;
     rdfs:subClassOf bgf:Resistance ;
+    rdfs:subClassOf bgf:OneNode ;
     rdfs:label "One resistance node" ;
     dcterms:description "A dissipator with one associated One Node" .
 
 bgf:ZeroStorageNode
     a bgf:CompositeElement ;
     rdfs:subClassOf bgf:QuantityStore ;
+    rdfs:subClassOf bgf:ZeroNode ;
     rdfs:label "Zero storage node" ;
     dcterms:description "A storage element with one associated Zero Node" .
 
