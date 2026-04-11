@@ -30,13 +30,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Python and install PyLode
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
         with:
-          python-version: '3.x'
+          activate-environment: true
 
       - name: Install PyLode
-        run: pip install pylode
+        # N.B. pylode 3.4 has issues. See https://github.com/RDFLib/pyLODE/issues/256
+        run: uv pip install pylode==3.3.4
 
       - name: Copy ontology sources and use PyLode to build HTML
         run: |
@@ -49,10 +50,10 @@ jobs:
           mkdir -p dist/templates/
           cp ./templates/*.ttl dist/templates
           #
-          pylode -o dist/ontologies/bondgraph-framework.html ./schema/ontology.ttl
-          pylode -o dist/ontologies/versioned/bondgraph-framework/2026-04-12-ontology.html ./schema/2026-04-12/ontology.ttl
-          pylode -o dist/ontologies/versioned/bondgraph-framework/2026-01-21-ontology.html ./schema/2026-01-21/ontology.ttl
-          pylode -o dist/ontologies/versioned/bondgraph-framework/2025-08-13-ontology.html ./schema/2025-08-13/ontology.ttl
+          uv run pylode -o dist/ontologies/bondgraph-framework.html ./schema/ontology.ttl
+          uv run pylode -o dist/ontologies/versioned/bondgraph-framework/2026-04-12-ontology.html ./schema/2026-04-12/ontology.ttl
+          uv run pylode -o dist/ontologies/versioned/bondgraph-framework/2026-01-21-ontology.html ./schema/2026-01-21/ontology.ttl
+          uv run pylode -o dist/ontologies/versioned/bondgraph-framework/2025-08-13-ontology.html ./schema/2025-08-13/ontology.ttl
 
       - name: Add our README as the site's index
         uses: jaywcjlove/markdown-to-html-cli@main
