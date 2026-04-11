@@ -27,10 +27,6 @@ bgf:PhysicalDomain
     a owl:Class ;
     dcterms:description "A physical domain in which energy is carried by some quantity." .
 
-bgf:Quantity
-    a owl:Class ;
-    dcterms:description "A carrier of energy in a physical domain." .
-
 bgf:Flow
     a owl:Class ;
     dcterms:description "The rate of change of a physical domain's quantity; the energy gradient with respect to momentum in a physical domain." .
@@ -47,6 +43,10 @@ bgf:Effort
 bgf:Momentum
     a owl:Class ;
     dcterms:description "A carrier of potential energy in a physical domain." .
+
+bgf:Quantity
+    a owl:Class ;
+    dcterms:description "A carrier of flow energy in a physical domain." .
 
 #################################################################
 #################################################################
