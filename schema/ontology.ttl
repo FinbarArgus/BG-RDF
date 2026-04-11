@@ -33,11 +33,15 @@ bgf:Quantity
 
 bgf:Flow
     a owl:Class ;
-    dcterms:description "The rate of change of a physical domain's quantity." .
+    dcterms:description "The rate of change of a physical domain's quantity; the energy gradient with respect to momentum in a physical domain." .
 
 bgf:Potential
     a owl:Class ;
-    dcterms:description "The energy gradient with respect to quantity in a physical domain." .
+    dcterms:description "The rate of change of a physical domain's momentum; the energy gradient with respect to quantity in a physical domain." .
+
+bgf:Momentum
+    a owl:Class ;
+    dcterms:description "A carrier of potential energy in a physical domain." .
 
 #################################################################
 #################################################################
@@ -81,7 +85,7 @@ bgf:QuantityStore
 bgf:FlowStore
     rdfs:subClassOf bgf:BondElement ;
     rdfs:label "Dynamic energy store" ;
-    dcterms:description "An element which stores dynamic energy as the flow of some quantity." .
+    dcterms:description "An element which stores dynamic energy as the amount of some momentum." .
 
 bgf:Dissipator
     rdfs:subClassOf bgf:BondElement ;
