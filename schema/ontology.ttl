@@ -366,6 +366,9 @@ bgf:hasQuantity
 bgf:hasLocation
     dcterms:description "The location of an element or junction in the physical system described by the bond graph." .
 
+bgf:hasPhysics
+    dcterms:description "A real world physical continuant, occurrent, or property that can be observed and analyzed by the methods of classical physics." .
+
 bgf:hasSpecies
     dcterms:description "The entity which an element or junction represents in the physical system described by the bond graph." .
 
