@@ -73,6 +73,10 @@ bgf:PowerPort
     dcterms:description "A port of a BondElement or JunctionStructure through which power is transfered." ;
     rdfs:subClassOf bg:PowerPort .
 
+bgf:SignalBond
+    a owl:Class ;
+    dcterms:description "A connection in which no power flows, used to convey state information." .
+
 #################################################################
 
 bgf:CompositeElement
@@ -279,6 +283,11 @@ bgf:hasPowerBond
     a owl:ObjectProperty ;
     rdfs:domain bgf:BondgraphModel ;
     rdfs:range bgf:PowerBond .
+
+bgf:hasSignalBond
+    a owl:ObjectProperty ;
+    rdfs:domain bgf:BondgraphModel ;
+    rdfs:range bgf:SignalBond .
 
 #################################################################
 
