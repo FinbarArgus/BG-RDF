@@ -39,6 +39,11 @@ bgf:Potential
     a owl:Class ;
     dcterms:description "The rate of change of a physical domain's momentum; the energy gradient with respect to quantity in a physical domain." .
 
+bgf:Effort
+    a owl:Class ;
+    owl:equivalentClass bgf:Potential ;
+    dcterms:description "And alternative name for the energy gradient with respect to quantity in a physical domain." .
+
 bgf:Momentum
     a owl:Class ;
     dcterms:description "A carrier of potential energy in a physical domain." .
