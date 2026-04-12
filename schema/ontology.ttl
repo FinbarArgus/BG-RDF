@@ -364,12 +364,15 @@ bgf:hasQuantity
 #################################################################
 
 bgf:hasLocation
+    a owl:ObjectProperty ;
     dcterms:description "The location of an element or junction in the physical system described by the bond graph." .
 
 bgf:hasPhysics
+    a owl:ObjectProperty ;
     dcterms:description "A real world physical continuant, occurrent, or property that can be observed and analyzed by the methods of classical physics." .
 
 bgf:hasSpecies
+    a owl:ObjectProperty ;
     dcterms:description "The entity which an element or junction represents in the physical system described by the bond graph." .
 
 #################################################################
