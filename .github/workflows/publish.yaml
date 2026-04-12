@@ -50,10 +50,10 @@ jobs:
           mkdir -p dist/templates/
           cp ./templates/*.ttl dist/templates
           #
-          uv run pylode -o dist/ontologies/bondgraph-framework.html ./schema/ontology.ttl
-          uv run pylode -o dist/ontologies/versioned/bondgraph-framework/2026-04-12-ontology.html ./schema/2026-04-12/ontology.ttl
-          uv run pylode -o dist/ontologies/versioned/bondgraph-framework/2026-01-21-ontology.html ./schema/2026-01-21/ontology.ttl
-          uv run pylode -o dist/ontologies/versioned/bondgraph-framework/2025-08-13-ontology.html ./schema/2025-08-13/ontology.ttl
+          uv run pylode -s -o dist/ontologies/bondgraph-framework.html ./schema/ontology.ttl
+          uv run pylode -s -o dist/ontologies/versioned/bondgraph-framework/2026-04-12-ontology.html ./schema/2026-04-12/ontology.ttl
+          uv run pylode -s -o dist/ontologies/versioned/bondgraph-framework/2026-01-21-ontology.html ./schema/2026-01-21/ontology.ttl
+          uv run pylode -s -o dist/ontologies/versioned/bondgraph-framework/2025-08-13-ontology.html ./schema/2025-08-13/ontology.ttl
 
       - name: Add our README as the site's index
         uses: jaywcjlove/markdown-to-html-cli@main
