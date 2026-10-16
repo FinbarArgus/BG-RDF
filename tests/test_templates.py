@@ -55,6 +55,14 @@ def _relation(g, template):
             return str(r)
 
 
+def test_each_template_is_defined_once(graph):
+    '''A template has at most one label, constitutive relation, law label and style (the ontology's functional
+    properties): a second definition of the same name in the templates would give it two.'''
+    for t in _templates(graph):
+        for p in (RDFS.label, BGF.constitutiveRelation, BGF.lawLabel, BGF.hasStyle):
+            assert len(list(graph.objects(t, p))) <= 1, f'{t}: more than one {p}'
+
+
 def test_constitutive_relations_are_mathml_over_known_names(graph):
     for t in _templates(graph):
         relation = _relation(graph, t)
@@ -154,4 +162,4 @@ def test_the_bernoulli_resistor_solves_its_pressure_drop(graph):
         v = _solve(graph, 'BernoulliHydraulicResistor', 'v', env)
         assert env['R'] * v + env['B'] * v * abs(v) == pytest.approx(u, abs=1e-12)
         assert _solve(graph, 'BernoulliHydraulicResistor', 'v', dict(env, B=0.0)) == \
-            pytest.approx(_solve(graph, 'HydraulicResistor', 'v', env))
+            pytest.approx(_solve(graph, 'HydraulicResistor', 'v', dict(u=u, k=1.0 / env['R'])))

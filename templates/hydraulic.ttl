@@ -44,30 +44,6 @@ bgf:HydraulicFlow
 
 #===============================================================================
 
-bgf:HydraulicResistor
-    a bgf:ElementTemplate ;
-    rdfs:subClassOf bgf:Resistance ;
-    bgf:hasDomain bgf:Hydraulic ;
-    rdfs:label "Hydraulic resistor (Poiseuille)" ;
-    bgf:hasParameter [
-        bgf:varName "R" ;
-        bgf:hasUnits "kPa.s/L"^^cdt:ucumunit
-    ] ;
-    # v = u/R
-    bgf:constitutiveRelation """
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <apply>
-                <eq/>
-                <ci>v</ci>
-                <apply>
-                    <divide/>
-                    <ci>u</ci>
-                    <ci>R</ci>
-                </apply>
-            </apply>
-        </math>
-    """^^bgf:mathml .
-
 bgf:BernoulliHydraulicResistor
     a bgf:ElementTemplate ;
     rdfs:subClassOf bgf:Resistance ;
@@ -90,7 +66,8 @@ bgf:BernoulliHydraulicResistor
         rdfs:label "Bernoulli (inertial) loss coefficient" ;
         bgf:hasUnits "kPa.s2/L2"^^cdt:ucumunit
     ] ;
-    # u = R*v + B*v*|v|, solved for the flow: v = 2*u/(R + sqrt(R^2 + 4*B*|u|)) (u/R when B = 0)
+    # u = R*v + B*v*|v|, solved for the flow: v = 2*u/(R + sqrt(R^2 + 4*B*|u|)); with B = 0 it is the Hydraulic
+    # resistance, v = k*u, with k = 1/R
     bgf:constitutiveRelation """
         <math xmlns="http://www.w3.org/1998/Math/MathML">
             <apply>

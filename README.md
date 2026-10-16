@@ -29,7 +29,7 @@ element's symbol) and says how it is drawn with `bgf:hasStyle`, a `bgf:ElementSt
 | `bgf:SaturatingChemicalReaction` | Reaction | the same over `1 + (exp(u_f/RT) + exp(u_r/RT))/sigma` | sat |
 | `bgf:ChemicalConcentration` | QuantityStore | `u = RT ln(K q)` | |
 | `bgf:SaturatingChemicalConcentration` | QuantityStore | `u = RT ln(K q k_sat/(k_sat + q))` | sat |
-| `bgf:HydraulicResistor` | Resistance | `v = u/R` | |
+| `bgf:HydraulicResistor` | Resistance | `v = k u` | |
 | `bgf:BernoulliHydraulicResistor` | Resistance | `u = R v + B v abs(v)`, solved for `v` | PB |
 
 `pytest tests` checks the ontology and templates (`pip install pytest rdflib`).
