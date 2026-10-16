@@ -385,6 +385,12 @@ bgf:HydraulicResistanceNode
     rdfs:subClassOf bgf:HydraulicResistor ;
     rdfs:subClassOf bgf:OneResistanceNode .
 
+bgf:BernoulliHydraulicResistanceNode
+    a bgf:CompositeTemplate ;
+    rdfs:label "Hydraulic resistance with a Bernoulli loss and One Node" ;
+    rdfs:subClassOf bgf:BernoulliHydraulicResistor ;
+    rdfs:subClassOf bgf:OneResistanceNode .
+
 bgf:HydraulicStorageNode
     a bgf:CompositeTemplate ;
     rdfs:label "Hydraulic storage with Zero Node" ;

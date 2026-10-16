@@ -519,6 +519,20 @@ bgf:ChemicalReactionNode
 
 #===============================================================================
 
+bgf:SaturatingChemicalStorageNode
+    a bgf:CompositeTemplate ;
+    rdfs:label "Chemical storage with saturating activity and Zero Node" ;
+    rdfs:subClassOf bgf:SaturatingChemicalConcentration ;
+    rdfs:subClassOf bgf:ZeroStorageNode .
+
+bgf:SaturatingChemicalReactionNode
+    a bgf:CompositeTemplate ;
+    rdfs:label "Saturating chemical reaction with One Node" ;
+    rdfs:subClassOf bgf:SaturatingChemicalReaction ;
+    rdfs:subClassOf bgf:OneReactionNode .
+
+#===============================================================================
+
 bgf:NKETransporterNode
     a bgf:CompositeTemplate ;
     rdfs:label "NKE transporter with One Node" ;
