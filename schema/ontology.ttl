@@ -276,6 +276,49 @@ bgf:varName
     rdfs:range xsd:Name .
 
 #################################################################
+#    Presentation of an Element Template
+#################################################################
+
+bgf:ElementStyle
+    a owl:Class ;
+    dcterms:description "How a diagram draws the elements of an Element Template, so that elements with different constitutive relations look different." .
+
+bgf:hasStyle
+    a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain bgf:ElementTemplate ;
+    rdfs:range bgf:ElementStyle .
+
+bgf:lawLabel
+    a owl:DatatypeProperty, owl:FunctionalProperty ;
+    dcterms:description "A short tag naming an Element Template's constitutive relation (e.g. \"sat\" for a saturating reaction), drawn with the element's symbol." ;
+    rdfs:domain bgf:ElementTemplate ;
+    rdfs:range xsd:string .
+
+bgf:textColour
+    a owl:DatatypeProperty, owl:FunctionalProperty ;
+    dcterms:description "A CSS colour for the element's symbol." ;
+    rdfs:domain bgf:ElementStyle ;
+    rdfs:range xsd:string .
+
+bgf:backgroundColour
+    a owl:DatatypeProperty, owl:FunctionalProperty ;
+    dcterms:description "A CSS colour for the element's background." ;
+    rdfs:domain bgf:ElementStyle ;
+    rdfs:range xsd:string .
+
+bgf:borderColour
+    a owl:DatatypeProperty, owl:FunctionalProperty ;
+    dcterms:description "A CSS colour for the element's border." ;
+    rdfs:domain bgf:ElementStyle ;
+    rdfs:range xsd:string .
+
+bgf:borderStyle
+    a owl:DatatypeProperty, owl:FunctionalProperty ;
+    dcterms:description "The element's border: \"solid\" (the default), \"dashed\" or \"double\"." ;
+    rdfs:domain bgf:ElementStyle ;
+    rdfs:range xsd:string .
+
+#################################################################
 #    Object Properties
 #################################################################
 

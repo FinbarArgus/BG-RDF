@@ -13,6 +13,27 @@
 2. Clone this repository.
 3. Run `./server.sh`.
 
+## Choosing a constitutive relation:
+
+An element's constitutive relation comes from its Element Template (`templates/*.ttl`): a
+Reaction, Resistance or store can be any template of its class in its domain, e.g. a
+`bgf:ChemicalReaction` (mass action) or a `bgf:SaturatingChemicalReaction`. A template whose
+relation is not its domain's default names it with `bgf:lawLabel` (a short tag drawn with the
+element's symbol) and says how it is drawn with `bgf:hasStyle`, a `bgf:ElementStyle`
+(`bgf:textColour`, `bgf:backgroundColour`, `bgf:borderColour`, `bgf:borderStyle` of `solid`,
+`dashed` or `double`), so elements with different relations look different on a diagram.
+
+| Template | Element | Relation | Law label |
+|---|---|---|---|
+| `bgf:ChemicalReaction` | Reaction | `v = kappa (exp(u_f/RT) - exp(u_r/RT))` | |
+| `bgf:SaturatingChemicalReaction` | Reaction | the same over `1 + (exp(u_f/RT) + exp(u_r/RT))/sigma` | sat |
+| `bgf:ChemicalConcentration` | QuantityStore | `u = RT ln(K q)` | |
+| `bgf:SaturatingChemicalConcentration` | QuantityStore | `u = RT ln(K q k_sat/(k_sat + q))` | sat |
+| `bgf:HydraulicResistor` | Resistance | `v = u/R` | |
+| `bgf:BernoulliHydraulicResistor` | Resistance | `u = R v + B v abs(v)`, solved for `v` | PB |
+
+`pytest tests` checks the ontology and templates (`pip install pytest rdflib`).
+
 ## Tools:
 
 * **[bg2cellml](https://github.com/CellDL/BG-Tools)**: a Python utility to generate CellML from BG-RDF models.
