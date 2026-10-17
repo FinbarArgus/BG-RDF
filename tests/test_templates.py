@@ -15,7 +15,7 @@ import os
 import xml.etree.ElementTree as ET
 
 import pytest
-from rdflib import Graph, Namespace, RDF, RDFS
+from rdflib import Graph, Namespace, RDF, RDFS, URIRef
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BGF = Namespace('https://bg-rdf.org/ontologies/bondgraph-framework#')
@@ -61,6 +61,16 @@ def test_transformers_and_gyrators_are_transform_nodes(graph):
     for kind in (BGF.TransformerNode, BGF.GyratorNode):
         assert (kind, RDFS.subClassOf, BGF.TransformNode) in graph
         assert graph.value(kind, RDFS.label) is not None
+
+
+def test_variable_naming_is_described(graph):
+    '''A model can name its variables in generated code: rules by element class and variable, and explicit names.'''
+    for prop in ('hasNamingRule', 'forElementClass', 'forVariable', 'namePattern', 'hasVariableName', 'cellmlName'):
+        assert (BGF[prop], RDF.type, None) in graph, prop
+    assert graph.value(BGF.hasNamingRule, RDFS.range) == BGF.NamingRule
+    assert graph.value(BGF.hasVariableName, RDFS.range) == BGF.VariableName
+    for placeholder in ('{species}', '{location}', '{name}', '{element}', '{label}', '{var}'):
+        assert placeholder in str(graph.value(BGF.NamingRule, URIRef('http://purl.org/dc/terms/description')))
 
 
 def test_each_template_is_defined_once(graph):

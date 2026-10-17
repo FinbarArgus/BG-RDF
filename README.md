@@ -39,6 +39,18 @@ membrane potential into a chemical potential (electrogenic transport).
 
 `pytest tests` checks the ontology and templates (`pip install pytest rdflib`).
 
+## Naming variables in generated code:
+
+A model's variables are named after its elements (`q_G6P_c`, `u_q_G6P_c`, `v_Re_HK_c`). A model may name them
+another way: a `bgf:NamingRule` names one variable of one class of element by a pattern, and a
+`bgf:VariableName` on an element names one of its variables explicitly:
+
+```turtle
+<> bgf:hasNamingRule [ bgf:forElementClass bgf:QuantityStore ; bgf:forVariable "q" ;
+                       bgf:namePattern "n_{species}_{location}" ] .
+:Re_HK bgf:hasVariableName [ bgf:forVariable "v" ; bgf:cellmlName "v_hexokinase" ] .
+```
+
 ## Tools:
 
 * **[bg2cellml](https://github.com/CellDL/BG-Tools)**: a Python utility to generate CellML from BG-RDF models.
