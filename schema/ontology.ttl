@@ -296,10 +296,12 @@ bgf:NamingRule
     dcterms:description """How the variables of a model's elements are named in generated code (e.g. CellML), in place of
 the bond graph's names (q_G6P_c, u_q_G6P_c, v_Re_HK_c). A rule names one variable (bgf:forVariable, the template's
 name for it: q, u, v, u_f, K, kappa, ...) of the elements of one class (bgf:forElementClass, e.g. bgf:QuantityStore;
-all classes when absent) by a pattern (bgf:namePattern) with placeholders {species}, {location}, {name} (the
+all classes when absent) in one physical domain (bgf:forDomain, e.g. bgf:Chemical; all domains when absent) by a
+pattern (bgf:namePattern) with placeholders {species}, {location}, {name} (the
 species, else the element's identifier), {element} (the bond graph's name for the element, e.g. q_G6P_c), {label}
 (its symbol, e.g. q) and {var}. Characters a name can't hold become _, repeated or surrounding _ are dropped, a name
-starting with a digit is prefixed with {var}_, and a name already taken gets _2, _3, ...""" .
+starting with a digit is prefixed with {var}_, and a name already taken gets _2, _3, ... Of the rules for a variable,
+the one naming the element's class and domain wins, then its class, then its domain, then neither.""" .
 
 bgf:hasNamingRule
     a owl:ObjectProperty ;
@@ -311,6 +313,12 @@ bgf:forElementClass
     a owl:ObjectProperty, owl:FunctionalProperty ;
     dcterms:description "The class of elements a naming rule applies to: a direct subclass of bgf:BondElement (e.g. bgf:QuantityStore, bgf:Reaction, bgf:PotentialSource)." ;
     rdfs:range owl:Class .
+
+bgf:forDomain
+    a owl:ObjectProperty, owl:FunctionalProperty ;
+    dcterms:description "The physical domain of the elements a naming rule applies to (e.g. bgf:Chemical, bgf:Hydraulic)." ;
+    rdfs:domain bgf:NamingRule ;
+    rdfs:range bgf:PhysicalDomain .
 
 bgf:forVariable
     a owl:DatatypeProperty, owl:FunctionalProperty ;

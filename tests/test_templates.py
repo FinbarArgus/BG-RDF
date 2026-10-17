@@ -65,7 +65,8 @@ def test_transformers_and_gyrators_are_transform_nodes(graph):
 
 def test_variable_naming_is_described(graph):
     '''A model can name its variables in generated code: rules by element class and variable, and explicit names.'''
-    for prop in ('hasNamingRule', 'forElementClass', 'forVariable', 'namePattern', 'hasVariableName', 'cellmlName'):
+    for prop in ('hasNamingRule', 'forElementClass', 'forDomain', 'forVariable', 'namePattern', 'hasVariableName',
+                 'cellmlName'):
         assert (BGF[prop], RDF.type, None) in graph, prop
     assert graph.value(BGF.hasNamingRule, RDFS.range) == BGF.NamingRule
     assert graph.value(BGF.hasVariableName, RDFS.range) == BGF.VariableName
