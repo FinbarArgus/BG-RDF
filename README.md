@@ -32,6 +32,11 @@ element's symbol) and says how it is drawn with `bgf:hasStyle`, a `bgf:ElementSt
 | `bgf:HydraulicResistor` | Resistance | `v = k u` | |
 | `bgf:BernoulliHydraulicResistor` | Resistance | `u = R v + B v abs(v)`, solved for `v` | PB |
 
+A `bgf:TransformNode` whose ports are in different physical domains is taken to be a gyrator. Say
+which it is with `bgf:TransformerNode` or `bgf:GyratorNode`. A reaction that moves charge q across a
+membrane is coupled to the membrane's capacitor through transformers of ratio q F, which turn the
+membrane potential into a chemical potential (electrogenic transport).
+
 `pytest tests` checks the ontology and templates (`pip install pytest rdflib`).
 
 ## Tools:

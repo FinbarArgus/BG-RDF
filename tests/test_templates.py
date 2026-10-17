@@ -55,6 +55,14 @@ def _relation(g, template):
             return str(r)
 
 
+def test_transformers_and_gyrators_are_transform_nodes(graph):
+    '''A transform node can say which it is, so a transformer between physical domains (charge moved across a
+    membrane: chemical potential = z F x electrical potential) is not taken for a gyrator.'''
+    for kind in (BGF.TransformerNode, BGF.GyratorNode):
+        assert (kind, RDFS.subClassOf, BGF.TransformNode) in graph
+        assert graph.value(kind, RDFS.label) is not None
+
+
 def test_each_template_is_defined_once(graph):
     '''A template has at most one label, constitutive relation, law label and style (the ontology's functional
     properties): a second definition of the same name in the templates would give it two.'''
